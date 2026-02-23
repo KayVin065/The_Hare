@@ -450,7 +450,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388302432}
   m_SourcePrefab: {fileID: 100100000, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
 --- !u!1 &297639904
 GameObject:
@@ -2178,6 +2181,41 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &1388302425 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+  m_PrefabInstance: {fileID: 187076044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1388302432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388302425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 784033150}
 --- !u!1 &1531843108
 GameObject:
   m_ObjectHideFlags: 0

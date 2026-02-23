@@ -1,44 +1,60 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private float moveForce = 10f;
+    public float moveSpeed = 10f;
+    public float jumpForce = 10f;
 
-    [SerializeField]
-    private float jumpForce = 10f;
-
-    private float movementX;
-    private RigidBody2D myBody;
+    private PlayerInput playerInput;
+    private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
+    private Vector2 moveInput;
 
     private string GROUND_TAG = "Ground";
     private bool isGrounded = true;
 
     private void Awake()
     {
-        myBody = GetComponent<Rigidbody2D>();
+        playerInput = new PlayerInput();
+        
+        playerInput.Player.Jump.performed += ctx => TryJump();
+        // space here for other events subscribed to 
+    }
+
+    private void OnEnable()
+    {
+        playerInput.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Player.Disable();
+    }
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        PlayerMoveKeyboard();
+        moveInput = playerInput.Player.Move.ReadValue<Vector2>();
+        transform.Translate(moveInput * moveSpeed * Time.deltaTime);
     }
 
-    void PlayerMoveKeyboard()
+    private void TryJump()
     {
-        movementX = Input.GetAxisRaw("Horizontal");
-        transform.position += new Vector3(movementX, 0f, 0f) * Time.deltaTime * moveForce;
+        if (!isGrounded) return;
+
+        Jump();
+    }
+    private void Jump()
+    {
+        Debug.Log("Jump pressed");
     }
 
 
