@@ -23,6 +23,12 @@ public class Player : MonoBehaviour
     public float groundRadius = 0.2f;
     public LayerMask groundLayer;
 
+    // Food Check
+    public Transform eatCheck;
+    public float eatRadius = 0.5f;
+    public LayerMask foodLayer;
+    private GameObject nearbyFood;
+
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Animator anim;
@@ -30,8 +36,7 @@ public class Player : MonoBehaviour
 
     private Vector2 moveInput;
 
-    //private string GROUND_TAG = "Ground";
-    private string FOOD_TAG = "Plant";
+    //private string FOOD_TAG = "Plant";
     //private string DIG_TAG = "Dig";
 
     private bool isGrounded;
@@ -59,7 +64,7 @@ public class Player : MonoBehaviour
         playerInput.Player.Sprint.started += OnSprintStart;
         playerInput.Player.Sprint.canceled += OnSprintStop;
 
-        //playerInput.Player.Eat.performed += ctx => TryEat();
+        playerInput.Player.Eat.performed += ctx => TryEat();
     }
 
     private void OnDisable()
@@ -78,6 +83,15 @@ public class Player : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
+        Collider2D food = Physics2D.OverlapCircle(eatCheck.position, eatRadius, foodLayer);
+        isEdible = (food != null);
+
+        if(isEdible) 
+            nearbyFood = food.gameObject;
+        else
+            nearbyFood = null;
+
+        // Jump timer updating
         if(isGrounded) 
             coyoteTimeCounter = coyoteTime;
         else
@@ -110,7 +124,6 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump pressed");
         coyoteTimeCounter = 0;
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
     }
@@ -135,25 +148,28 @@ public class Player : MonoBehaviour
 
     private void TryEat()
     {
-        if (!isEdible) {
+        if (!isEdible || nearbyFood == null) {
             Debug.Log("You can't eat that!");
             return;
         }    
+
         Eat();
     }
 
     private void Eat()
     {
         Debug.Log("You ate something");
+        Destroy(nearbyFood); // eat the plant
+        nearbyFood = null;
         isEdible = false;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnDrawGizmosSelected()
     {
-        if(collision.gameObject.CompareTag(FOOD_TAG))
+        if (eatCheck != null)
         {
-            isEdible = true;
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(eatCheck.position, eatRadius);
         }
-
     }
 }
