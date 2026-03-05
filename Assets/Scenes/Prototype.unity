@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2476926
+      value: -3.24
       objectReference: {fileID: 0}
     - target: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -172,8 +172,16 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3798384497300214104, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798384497300214104, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_GravityScale
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3798384497300214104, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4443571097916859554, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: jumpForce
@@ -187,14 +195,56 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4443571097916859554, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+    - {fileID: 5716597061520353246, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 200745883}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1388302443}
+    - targetCorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1388302437}
     - targetCorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1388302432}
   m_SourcePrefab: {fileID: 100100000, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+--- !u!1 &200745882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200745883}
+  m_Layer: 6
+  m_Name: GroundCheck
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200745883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200745882}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.355, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1388302442}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &329062790
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +256,7 @@ GameObject:
   - component: {fileID: 329062791}
   - component: {fileID: 329062792}
   - component: {fileID: 329062793}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (14)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -319,7 +369,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -344,7 +394,7 @@ GameObject:
   - component: {fileID: 341380267}
   - component: {fileID: 341380268}
   - component: {fileID: 341380269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -457,7 +507,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -482,7 +532,7 @@ GameObject:
   - component: {fileID: 409719917}
   - component: {fileID: 409719918}
   - component: {fileID: 409719919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -595,7 +645,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -620,7 +670,7 @@ GameObject:
   - component: {fileID: 513770764}
   - component: {fileID: 513770765}
   - component: {fileID: 513770766}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (11)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -733,7 +783,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -758,7 +808,7 @@ GameObject:
   - component: {fileID: 587696117}
   - component: {fileID: 587696118}
   - component: {fileID: 587696119}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -871,7 +921,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -896,7 +946,7 @@ GameObject:
   - component: {fileID: 651205803}
   - component: {fileID: 651205804}
   - component: {fileID: 651205805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1009,7 +1059,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1034,7 +1084,7 @@ GameObject:
   - component: {fileID: 690458003}
   - component: {fileID: 690458004}
   - component: {fileID: 690458005}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1147,7 +1197,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1324,7 +1374,7 @@ GameObject:
   - component: {fileID: 794442106}
   - component: {fileID: 794442107}
   - component: {fileID: 794442108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (13)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1437,7 +1487,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1493,7 +1543,7 @@ GameObject:
   - component: {fileID: 865000533}
   - component: {fileID: 865000534}
   - component: {fileID: 865000535}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (9)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1606,7 +1656,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1631,7 +1681,7 @@ GameObject:
   - component: {fileID: 914397030}
   - component: {fileID: 914397031}
   - component: {fileID: 914397032}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (10)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1744,7 +1794,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2164,7 +2214,7 @@ GameObject:
   - component: {fileID: 1364962474}
   - component: {fileID: 1364962475}
   - component: {fileID: 1364962476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2277,7 +2327,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2326,6 +2376,71 @@ MonoBehaviour:
   m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 784033150}
+--- !u!114 &1388302437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388302425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d41d864c8e0704f47b5fb3751371d552, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  moveSpeed: 12
+  sprintMultiplier: 1.5
+  jumpForce: 12
+  fallMultiplier: 2.5
+  coyoteTime: 0.1
+  jumpBufferTime: 0.1
+  groundCheck: {fileID: 200745883}
+  groundRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!4 &1388302442 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+  m_PrefabInstance: {fileID: 187076044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!70 &1388302443
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388302425}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1}
+  m_Direction: 0
 --- !u!1 &1479402590
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,7 +2452,7 @@ GameObject:
   - component: {fileID: 1479402591}
   - component: {fileID: 1479402592}
   - component: {fileID: 1479402593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2450,7 +2565,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2475,7 +2590,7 @@ GameObject:
   - component: {fileID: 1618016654}
   - component: {fileID: 1618016655}
   - component: {fileID: 1618016656}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2588,7 +2703,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2611,7 +2726,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1807243642}
-  m_Layer: 0
+  - component: {fileID: 1807243644}
+  - component: {fileID: 1807243643}
+  m_Layer: 6
   m_Name: GroundHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2649,6 +2766,242 @@ Transform:
   - {fileID: 2048176877}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!66 &1807243643
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807243641}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 409719919}
+    m_ColliderPaths:
+    - - X: -60299872
+        Y: -68742120
+      - X: -96499840
+        Y: -68742120
+      - X: -96499840
+        Y: -90057872
+      - X: -60299872
+        Y: -90057872
+  - m_Collider: {fileID: 341380269}
+    m_ColliderPaths:
+    - - X: -349899680
+        Y: -68742120
+      - X: -386099616
+        Y: -68742120
+      - X: -386099616
+        Y: -90057872
+      - X: -349899680
+        Y: -90057872
+  - m_Collider: {fileID: 513770766}
+    m_ColliderPaths:
+    - - X: -132699824
+        Y: -68742120
+      - X: -168899792
+        Y: -68742120
+      - X: -168899792
+        Y: -90057872
+      - X: -132699824
+        Y: -90057872
+  - m_Collider: {fileID: 587696119}
+    m_ColliderPaths:
+    - - X: -313699680
+        Y: -68742120
+      - X: -349899648
+        Y: -68742120
+      - X: -349899648
+        Y: -90057872
+      - X: -313699680
+        Y: -90057872
+  - m_Collider: {fileID: 651205805}
+    m_ColliderPaths:
+    - - X: 84500008
+        Y: -68742120
+      - X: 48300044
+        Y: -68742120
+      - X: 48300044
+        Y: -90057872
+      - X: 84500008
+        Y: -90057872
+  - m_Collider: {fileID: 690458005}
+    m_ColliderPaths:
+    - - X: 156899952
+        Y: -68742120
+      - X: 120699984
+        Y: -68742120
+      - X: 120699984
+        Y: -90057872
+      - X: 156899952
+        Y: -90057872
+  - m_Collider: {fileID: 794442108}
+    m_ColliderPaths:
+    - - X: -168899808
+        Y: -68742120
+      - X: -205099760
+        Y: -68742120
+      - X: -205099760
+        Y: -90057872
+      - X: -168899808
+        Y: -90057872
+  - m_Collider: {fileID: 865000535}
+    m_ColliderPaths:
+    - - X: -205099792
+        Y: -68742120
+      - X: -241299744
+        Y: -68742120
+      - X: -241299744
+        Y: -90057872
+      - X: -205099792
+        Y: -90057872
+  - m_Collider: {fileID: 914397032}
+    m_ColliderPaths:
+    - - X: -277499744
+        Y: -68742120
+      - X: -313699680
+        Y: -68742120
+      - X: -313699680
+        Y: -90057872
+      - X: -277499744
+        Y: -90057872
+  - m_Collider: {fileID: 1364962476}
+    m_ColliderPaths:
+    - - X: 12100065
+        Y: -68742120
+      - X: -24099904
+        Y: -68742120
+      - X: -24099904
+        Y: -90057872
+      - X: 12100065
+        Y: -90057872
+  - m_Collider: {fileID: 1479402593}
+    m_ColliderPaths:
+    - - X: 120699984
+        Y: -68742120
+      - X: 84500016
+        Y: -68742120
+      - X: 84500016
+        Y: -90057872
+      - X: 120699984
+        Y: -90057872
+  - m_Collider: {fileID: 1618016656}
+    m_ColliderPaths:
+    - - X: -24099904
+        Y: -68742120
+      - X: -60299872
+        Y: -68742120
+      - X: -60299872
+        Y: -90057872
+      - X: -24099904
+        Y: -90057872
+  - m_Collider: {fileID: 1879467594}
+    m_ColliderPaths:
+    - - X: 48300036
+        Y: -68742120
+      - X: 12100068
+        Y: -68742120
+      - X: 12100068
+        Y: -90057872
+      - X: 48300036
+        Y: -90057872
+  - m_Collider: {fileID: 1883301895}
+    m_ColliderPaths:
+    - - X: 193099920
+        Y: -68742120
+      - X: 156899952
+        Y: -68742120
+      - X: 156899952
+        Y: -90057872
+      - X: 193099920
+        Y: -90057872
+  - m_Collider: {fileID: 2048176879}
+    m_ColliderPaths:
+    - - X: -96499856
+        Y: -68742120
+      - X: -132699824
+        Y: -68742120
+      - X: -132699824
+        Y: -90057872
+      - X: -96499856
+        Y: -90057872
+  - m_Collider: {fileID: 329062793}
+    m_ColliderPaths:
+    - - X: -241299744
+        Y: -68742120
+      - X: -277499680
+        Y: -68742120
+      - X: -277499680
+        Y: -90057872
+      - X: -241299744
+        Y: -90057872
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 19.309963, y: -9.005787}
+      - {x: 19.309963, y: -6.8742123}
+      - {x: -38.609962, y: -6.874242}
+      - {x: -38.609932, y: -9.005787}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 1807243641}
+--- !u!50 &1807243644
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807243641}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1879467591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2660,7 +3013,7 @@ GameObject:
   - component: {fileID: 1879467592}
   - component: {fileID: 1879467593}
   - component: {fileID: 1879467594}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2773,7 +3126,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2798,7 +3151,7 @@ GameObject:
   - component: {fileID: 1883301893}
   - component: {fileID: 1883301894}
   - component: {fileID: 1883301895}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2911,7 +3264,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -2936,7 +3289,7 @@ GameObject:
   - component: {fileID: 2048176877}
   - component: {fileID: 2048176878}
   - component: {fileID: 2048176879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground (15)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3049,7 +3402,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -3080,7 +3433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!60 &2146320451
 PolygonCollider2D:
   m_ObjectHideFlags: 0

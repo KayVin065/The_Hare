@@ -96,6 +96,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "ec8d921a-6c3c-498e-9ec6-d3b5760f8e61",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "6c5646ac-b755-41d3-84eb-cec646c951f5",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "4c3c7e7b-6cd9-408a-b9a6-eebd2f82e159",
                     "path": "<Keyboard>/space",
