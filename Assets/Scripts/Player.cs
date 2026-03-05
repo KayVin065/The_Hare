@@ -4,17 +4,17 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     // Movement
-    public float moveSpeed = 8f;
+    public float moveSpeed = 12f;
     public float sprintMultiplier = 1.5f;
     private float currentSpeed;
 
     // Jump
-    public float jumpForce = 10f;
+    public float jumpForce = 12f;
     public float fallMultiplier = 2.5f;
 
     // Jump Assist
-    public float coyoteTime = 0.1f;
-    public float jumpBufferTime = 0.1f;
+    private float coyoteTime = 0.1f;
+    private float jumpBufferTime = 0.1f;
     private float coyoteTimeCounter;
     private float jumpBufferCounter;
 
@@ -29,17 +29,25 @@ public class Player : MonoBehaviour
     public LayerMask foodLayer;
     private GameObject nearbyFood;
 
+    // Stamina
+    public float maxStamina = 100f; 
+    public float currentStamina;
+
+    public float moveDecreaseRate = 2f; 
+    public float sprintDecreaseRate = 7f;
+    public float specialDecreaseRate = 10f;
+    public float staminaIncreaseRate = 15f;
+
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
+    private UnityEngine.UI.Slider staminaBar;
 
     private Vector2 moveInput;
 
-    //private string FOOD_TAG = "Plant";
-    //private string DIG_TAG = "Dig";
-
     private bool isGrounded;
+    private bool isSprinting;
 
     // Abilities
     private bool isEdible = false;
@@ -61,6 +69,7 @@ public class Player : MonoBehaviour
         playerInput.Player.Enable();
 
         playerInput.Player.Jump.performed += OnJump;
+
         playerInput.Player.Sprint.started += OnSprintStart;
         playerInput.Player.Sprint.canceled += OnSprintStop;
 
@@ -74,7 +83,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        
+        currentStamina = maxStamina;
+        isSprinting = false;
     }
 
     void Update()
@@ -104,6 +114,24 @@ public class Player : MonoBehaviour
             jumpBufferCounter = 0;
         }
 
+        // Stamina calculations
+        if(moveInput.x != 0) 
+        {
+            currentStamina -= moveDecreaseRate * Time.deltaTime;
+
+            if(isSprinting)
+                currentStamina -= sprintDecreaseRate * Time.deltaTime;
+
+            if(currentStamina < 0) 
+                currentStamina = 0
+        }
+
+        if(staminaBar != null)
+            staminaBar.value = currentStamina / maxStamina;
+
+        if (currentStamina <= 0)
+            GameOver();
+
         FlipSprite();
     }
 
@@ -126,15 +154,21 @@ public class Player : MonoBehaviour
     {
         coyoteTimeCounter = 0;
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+
+        currentStamina -= specialDecreaseRate;
+        if (currentStamina < 0)
+            currentStamina = 0;
     }
 
-    void OnSprintStart(InputAction.CallbackContext ctx)
+    void OnSprintStart(InputAction.CallbackContext ctx) 
     {
+        isSprinting = true;
         currentSpeed = moveSpeed * sprintMultiplier;
     }
 
-    void OnSprintStop(InputAction.CallbackContext ctx)
+    void OnSprintStop(InputAction.CallbackContext ctx) 
     {
+        isSprinting = false;
         currentSpeed = moveSpeed;
     }
 
@@ -162,6 +196,10 @@ public class Player : MonoBehaviour
         Destroy(nearbyFood); // eat the plant
         nearbyFood = null;
         isEdible = false;
+
+        currentStamina += staminaIncreaseRate;
+        if (currentStamina > maxStamina)
+            currentStamina = maxStamina;
     }
 
     void OnDrawGizmosSelected()
@@ -171,5 +209,11 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(eatCheck.position, eatRadius);
         }
+    }
+
+    void GameOver() 
+    {
+        Debug.Log("You ran out of stamina!");
+        this.enabled = false; 
     }
 }
