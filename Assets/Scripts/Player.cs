@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
                 currentStamina -= sprintDecreaseRate * Time.deltaTime;
 
             if(currentStamina < 0) 
-                currentStamina = 0
+                currentStamina = 0;
         }
 
         if(staminaBar != null)
