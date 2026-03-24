@@ -30,20 +30,20 @@ public class Player : MonoBehaviour
     private GameObject nearbyFood;
 
     // Stamina
-    public float maxStamina = 100f; 
-    public float currentStamina;
+    private Stamina stamina;
+    public float maxStamina = 150f; 
+    [SerializeField] private UnityEngine.UI.Slider staminaBar;
 
-    public float moveDecreaseRate = 2f; 
-    public float sprintDecreaseRate = 7f;
-    public float specialDecreaseRate = 10f;
-    public float staminaIncreaseRate = 15f;
+    public float sprintDecrease = 5f;
+    public float specialDecrease = 10f;
+    public float staminaIncrease = 15f;
+    private float staminaMultiplier = 1.5f;
 
+    // Player Components
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private Animator anim;
     private SpriteRenderer sr;
-    private UnityEngine.UI.Slider staminaBar;
-
     private Vector2 moveInput;
 
     private bool isGrounded;
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        currentStamina = maxStamina;
+        stamina = new Stamina(maxStamina);
         isSprinting = false;
     }
 
@@ -96,12 +96,13 @@ public class Player : MonoBehaviour
         Collider2D food = Physics2D.OverlapCircle(eatCheck.position, eatRadius, foodLayer);
         isEdible = (food != null);
 
+        // Check for nearby food objects
         if(isEdible) 
             nearbyFood = food.gameObject;
         else
             nearbyFood = null;
 
-        // Jump timer updating
+        // Jump timer and counter updates
         if(isGrounded) 
             coyoteTimeCounter = coyoteTime;
         else
@@ -117,19 +118,16 @@ public class Player : MonoBehaviour
         // Stamina calculations
         if(moveInput.x != 0) 
         {
-            currentStamina -= moveDecreaseRate * Time.deltaTime;
-
+            // Decrease stamina more while sprinting
             if(isSprinting)
-                currentStamina -= sprintDecreaseRate * Time.deltaTime;
-
-            if(currentStamina < 0) 
-                currentStamina = 0;
+                stamina.DecreaseStamina(sprintDecrease * Time.deltaTime);
         }
 
+        // Stamina UI 
         if(staminaBar != null)
-            staminaBar.value = currentStamina / maxStamina;
+            staminaBar.value = stamina.CurrentStamina / stamina.MaxStamina;
 
-        if (currentStamina <= 0)
+        if (stamina.CurrentStamina <= 0)
             GameOver();
 
         FlipSprite();
@@ -145,6 +143,8 @@ public class Player : MonoBehaviour
         }
     }
 
+    // ********** ACTIONS **********
+    // Jump
     void OnJump(InputAction.CallbackContext ctx) 
     {
         jumpBufferCounter = jumpBufferTime;
@@ -155,11 +155,10 @@ public class Player : MonoBehaviour
         coyoteTimeCounter = 0;
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
 
-        currentStamina -= specialDecreaseRate;
-        if (currentStamina < 0)
-            currentStamina = 0;
+        stamina.DecreaseStamina(specialDecrease);
     }
 
+    // Sprint
     void OnSprintStart(InputAction.CallbackContext ctx) 
     {
         isSprinting = true;
@@ -172,14 +171,7 @@ public class Player : MonoBehaviour
         currentSpeed = moveSpeed;
     }
 
-    void FlipSprite()
-    {
-        if (moveInput.x > 0)
-            sr.flipX = false;
-        else if (moveInput.x < 0)
-            sr.flipX = true;
-    }
-
+    // Eat
     private void TryEat()
     {
         if (!isEdible || nearbyFood == null) {
@@ -197,11 +189,27 @@ public class Player : MonoBehaviour
         nearbyFood = null;
         isEdible = false;
 
-        currentStamina += staminaIncreaseRate;
-        if (currentStamina > maxStamina)
-            currentStamina = maxStamina;
+        stamina.IncreaseStamina(staminaIncrease);
     }
 
+    // Dig
+
+    // ********** VISUALS **********
+
+    /*
+        - update animations so they change based on each action
+        - update sounds to play with certain actions (do i just put this inside of the callback functions?)
+    */
+
+    void FlipSprite()
+    {
+        if (moveInput.x > 0)
+            sr.flipX = false;
+        else if (moveInput.x < 0)
+            sr.flipX = true;
+    }
+
+    // ********** GET RID OF THIS LATER ********** 
     void OnDrawGizmosSelected()
     {
         if (eatCheck != null)
@@ -213,7 +221,7 @@ public class Player : MonoBehaviour
 
     void GameOver() 
     {
-        Debug.Log("You ran out of stamina!");
+        Debug.Log("Game Over!");
         this.enabled = false; 
     }
 }
