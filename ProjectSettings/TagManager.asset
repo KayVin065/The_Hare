@@ -6,15 +6,16 @@ TagManager:
   tags:
   - Ground
   - Plant
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - Ground
-  - Plant
+  - Dig
+  - 
   - 
   - 
   - 

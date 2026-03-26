@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -23,11 +24,9 @@ public class Player : MonoBehaviour
     public float groundRadius = 0.2f;
     public LayerMask groundLayer;
 
-    // Food Check
-    public Transform eatCheck;
-    public float eatRadius = 0.5f;
-    public LayerMask foodLayer;
+    // Food and Dig Objs
     private GameObject nearbyFood;
+    private GameObject nearbyDig;
 
     // Stamina
     private Stamina stamina;
@@ -39,6 +38,14 @@ public class Player : MonoBehaviour
     public float staminaIncrease = 15f;
     private float staminaMultiplier = 1.5f;
 
+    // Lives
+    private PlayerLives lives;
+    [SerializeField] private LivesUI livesUI;
+    private int maxLives = 3;
+    private bool isInvincible = false;
+    private float invincibleTime = 1f;
+    public event System.Action<int> OnLivesChanged;
+
     // Player Components
     private PlayerInput playerInput;
     private Rigidbody2D rb;
@@ -48,10 +55,6 @@ public class Player : MonoBehaviour
 
     private bool isGrounded;
     private bool isSprinting;
-
-    // Abilities
-    private bool isEdible = false;
-    //private bool isDiggable = true;
 
     private void Awake()
     {
@@ -74,6 +77,8 @@ public class Player : MonoBehaviour
         playerInput.Player.Sprint.canceled += OnSprintStop;
 
         playerInput.Player.Eat.performed += ctx => TryEat();
+        playerInput.Player.Dig.performed += ctx => TryDig();
+        
     }
 
     private void OnDisable()
@@ -84,7 +89,12 @@ public class Player : MonoBehaviour
     void Start()
     {
         stamina = new Stamina(maxStamina);
+        lives = new PlayerLives(maxLives);
+
         isSprinting = false;
+
+        livesUI.Connect(this);
+        livesUI.UpdateLives(lives.CurrentLives);
     }
 
     void Update()
@@ -92,15 +102,6 @@ public class Player : MonoBehaviour
         moveInput = playerInput.Player.Move.ReadValue<Vector2>();
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
-
-        Collider2D food = Physics2D.OverlapCircle(eatCheck.position, eatRadius, foodLayer);
-        isEdible = (food != null);
-
-        // Check for nearby food objects
-        if(isEdible) 
-            nearbyFood = food.gameObject;
-        else
-            nearbyFood = null;
 
         // Jump timer and counter updates
         if(isGrounded) 
@@ -143,6 +144,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D obj) 
+    {
+        if (obj.GetComponent<Edible>() != null)
+            nearbyFood = obj.gameObject;
+        
+        if (obj.GetComponent<Diggable>() != null)
+            nearbyDig = obj.gameObject;
+
+        if (obj.CompareTag("Enemy"))
+            TakeHit();
+    }
+
+    private void OnTriggerExit2D(Collider2D obj) 
+    {
+        if (obj.gameObject == nearbyFood)
+            nearbyFood = null;
+        
+        if (obj.gameObject == nearbyDig)
+            nearbyDig = null;
+    }
+
     // ********** ACTIONS **********
     // Jump
     void OnJump(InputAction.CallbackContext ctx) 
@@ -174,7 +196,7 @@ public class Player : MonoBehaviour
     // Eat
     private void TryEat()
     {
-        if (!isEdible || nearbyFood == null) {
+        if (nearbyFood == null) {
             Debug.Log("You can't eat that!");
             return;
         }    
@@ -184,15 +206,69 @@ public class Player : MonoBehaviour
 
     private void Eat()
     {
-        Debug.Log("You ate something");
-        Destroy(nearbyFood); // eat the plant
-        nearbyFood = null;
-        isEdible = false;
+        Edible edibleObj = nearbyFood.GetComponent<Edible>();
 
-        stamina.IncreaseStamina(staminaIncrease);
+        if (edibleObj != null) {
+            edibleObj.Eat();
+            stamina.IncreaseStamina(staminaIncrease);
+
+            Debug.Log("You ate something");
+
+            nearbyFood = null;
+        }
     }
 
     // Dig
+    private void TryDig()
+    {
+        if (nearbyDig == null) {
+            Debug.Log("You can't dig here!");
+            return;
+        }
+
+        Dig();
+    }
+
+    private void Dig() 
+    {
+        Diggable diggableObj = nearbyDig.GetComponent<Diggable>();
+
+        if (diggableObj != null) {
+            diggableObj.Dig();
+            stamina.DecreaseStamina(specialDecrease * 0.5f);
+
+            if(diggableObj.currentDigs >= diggableObj.digsRequired)
+                nearbyDig = null;
+        }
+    }
+
+    // Damage
+    private void TakeHit()
+    {
+        if (isInvincible) return;
+
+        lives.LoseLife();
+        OnLivesChanged?.Invoke(lives.CurrentLives);
+        Debug.Log("YOWCHHHHHH!!!!!");
+
+        if(lives.IsDead())
+            Die();
+        else   
+            StartCoroutine(Invincible());
+    }
+
+    private IEnumerator Invincible()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(invincibleTime);
+        isInvincible = false;
+    }
+
+    private void Die()
+    {
+        Debug.Log("You die!");
+        GameOver();
+    }
 
     // ********** VISUALS **********
 
@@ -207,16 +283,6 @@ public class Player : MonoBehaviour
             sr.flipX = false;
         else if (moveInput.x < 0)
             sr.flipX = true;
-    }
-
-    // ********** GET RID OF THIS LATER ********** 
-    void OnDrawGizmosSelected()
-    {
-        if (eatCheck != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(eatCheck.position, eatRadius);
-        }
     }
 
     void GameOver() 

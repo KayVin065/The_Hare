@@ -239,19 +239,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""26cfcc98-2b7b-48b0-a1ad-35b36e14633f"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dig"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""2b0ff93b-30aa-4480-abc4-774ec2aba3a5"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""MultiTap(tapCount=3)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dig"",
@@ -272,7 +261,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""37a58081-8799-40f6-b522-3cee3536880e"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
