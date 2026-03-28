@@ -24,9 +24,10 @@ public class Player : MonoBehaviour
     public float groundRadius = 0.2f;
     public LayerMask groundLayer;
 
-    // Food and Dig Objs
+    // Special Action Objs
     private GameObject nearbyFood;
     private GameObject nearbyDig;
+    private GameObject nearbyInvestigate;
 
     // Stamina
     private Stamina stamina;
@@ -78,6 +79,7 @@ public class Player : MonoBehaviour
 
         playerInput.Player.Eat.performed += ctx => TryEat();
         playerInput.Player.Dig.performed += ctx => TryDig();
+        playerInput.Player.Investigate.performed += ctx => TryInvestigate();
         
     }
 
@@ -152,6 +154,9 @@ public class Player : MonoBehaviour
         if (obj.GetComponent<Diggable>() != null)
             nearbyDig = obj.gameObject;
 
+        if (obj.GetComponent<Investigatable>() != null)
+            nearbyInvestigate = obj.gameObject;
+
         if (obj.CompareTag("Enemy"))
             TakeHit();
     }
@@ -163,6 +168,9 @@ public class Player : MonoBehaviour
         
         if (obj.gameObject == nearbyDig)
             nearbyDig = null;
+
+        if (obj.gameObject == nearbyInvestigate)
+            nearbyInvestigate = null;
     }
 
     // ********** ACTIONS **********
@@ -239,6 +247,36 @@ public class Player : MonoBehaviour
 
             if(diggableObj.currentDigs >= diggableObj.digsRequired)
                 nearbyDig = null;
+        }
+    }
+
+    // Investigate
+    private void TryInvestigate()
+    {
+        if (nearbyInvestigate == null) {
+            Debug.Log("You can't investigate that!");
+            return;
+        }
+
+        Investigate();
+
+    }
+
+    // Investigating increases the player's stamina and adds a life
+    // A cutscene will play when the object is investigated
+    private void Investigate()
+    {
+        Investigatable investigateObj = nearbyInvestigate.GetComponent<Investigatable>();
+
+        if (investigateObj != null) {
+            investigateObj.Investigate();
+            stamina.IncreaseStamina(staminaIncrease * staminaMultiplier);
+
+            lives.GainLife();
+            OnLivesChanged?.Invoke(lives.CurrentLives);
+        }
+        else {
+            Debug.Log("investigate is null");
         }
     }
 

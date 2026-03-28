@@ -25,6 +25,6 @@ public class PlayerLives
 
     public void GainLife() 
     {
-        CurrentLives = Mathf.Min(CurrentLives++, MaxLives);
+        CurrentLives = Mathf.Min(CurrentLives + 1, MaxLives);
     }
 }
