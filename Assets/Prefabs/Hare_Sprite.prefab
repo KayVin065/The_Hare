@@ -64,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01, y: 0.06, z: 0}
-  m_LocalScale: {x: 0.8095, y: 1.3637, z: 1}
+  m_LocalScale: {x: 0.7699154, y: 1.1461335, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8958322832998607811}
@@ -139,7 +139,7 @@ CapsuleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: db96c3170a9c31e46aa546b590960593, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -200,7 +200,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.14}
   m_Radius: 0.4
 --- !u!50 &3798384497300214104
 Rigidbody2D:
@@ -272,11 +272,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  maxStamina: 100
+  maxStamina: 250
   staminaBar: {fileID: 0}
   sprintDecrease: 7
   specialDecrease: 10
   staminaIncrease: 15
+  livesUI: {fileID: 0}
 --- !u!114 &3754900839863141068
 MonoBehaviour:
   m_ObjectHideFlags: 0

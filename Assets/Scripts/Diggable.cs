@@ -5,6 +5,8 @@ public class Diggable : MonoBehaviour
     public int digsRequired = 2;
     public int currentDigs = 0;
 
+    public AudioClip digSound;
+
     public void Dig() 
     {
         currentDigs++;
@@ -16,6 +18,8 @@ public class Diggable : MonoBehaviour
         else {
             Debug.Log("You dug...");
         }
+
+        AudioManager.instance.PlaySFX(digSound);
     }
 
     protected virtual void OnFullyDug()
