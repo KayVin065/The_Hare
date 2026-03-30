@@ -115,8 +115,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -903982139
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 3320dc8808083fb49942c08f29f867ec, type: 3}
@@ -281,12 +281,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  maxStamina: 250
+  maxStamina: 100
   staminaBar: {fileID: 0}
   sprintDecrease: 7
   specialDecrease: 10
   staminaIncrease: 15
   livesUI: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: c904e13b5143e4d4f98df2e7045af019, type: 3}
+  damageSound: {fileID: 8300000, guid: e828815f7dbd85a4eae2b6622889f415, type: 3}
+  loseText: {fileID: 0}
 --- !u!114 &3754900839863141068
 MonoBehaviour:
   m_ObjectHideFlags: 0

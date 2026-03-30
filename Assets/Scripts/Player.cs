@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip damageSound;
 
+    [SerializeField] private GameObject loseText;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -101,6 +103,8 @@ public class Player : MonoBehaviour
 
         livesUI.Connect(this);
         livesUI.UpdateLives(lives.CurrentLives);
+
+        loseText.SetActive(false);
     }
 
     void Update()
@@ -280,9 +284,6 @@ public class Player : MonoBehaviour
             lives.GainLife();
             OnLivesChanged?.Invoke(lives.CurrentLives);
         }
-        else {
-            Debug.Log("investigate is null");
-        }
     }
 
     // Damage
@@ -331,6 +332,8 @@ public class Player : MonoBehaviour
     void GameOver() 
     {
         Debug.Log("Game Over!");
+        loseText.SetActive(true);
+
         this.enabled = false; 
     }
 }
