@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 1898922606236118807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.355, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -4.25, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2901331998497192866}
@@ -41,13 +41,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2901331998497192866}
   - component: {fileID: 7350055392743971053}
-  - component: {fileID: 8250704913041608691}
+  - component: {fileID: 921023301971935674}
   - component: {fileID: 8655862444394412494}
   - component: {fileID: 3798384497300214104}
   - component: {fileID: 6423495412667738534}
   - component: {fileID: 5244027786083889641}
   - component: {fileID: 3754900839863141068}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hare_Sprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.01, y: 0.06, z: 0}
-  m_LocalScale: {x: 0.7699154, y: 1.1461335, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8958322832998607811}
@@ -119,18 +119,18 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3320dc8808083fb49942c08f29f867ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.48, y: 15.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!70 &8250704913041608691
-CapsuleCollider2D:
+--- !u!61 &921023301971935674
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -163,9 +163,18 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
+  m_Offset: {x: -0.047119617, y: -0.3298378}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.48, y: 15.36}
+    newSize: {x: 20.48, y: 15.36}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 11.715772, y: 13.569458}
+  m_EdgeRadius: 0
 --- !u!58 &8655862444394412494
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -200,8 +209,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.14}
-  m_Radius: 0.4
+  m_Offset: {x: 0, y: -1.7000002}
+  m_Radius: 6.299054
 --- !u!50 &3798384497300214104
 Rigidbody2D:
   serializedVersion: 5
@@ -268,7 +277,7 @@ MonoBehaviour:
   jumpForce: 12
   fallMultiplier: 2.5
   groundCheck: {fileID: 8958322832998607811}
-  groundRadius: 0.2
+  groundRadius: 0.3
   groundLayer:
     serializedVersion: 2
     m_Bits: 8

@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     private GameObject nearbyDig;
     private GameObject nearbyInvestigate;
 
+    private bool isGrounded;
+    private bool isSprinting;
+
     // Stamina
     private Stamina stamina;
     public float maxStamina = 150f; 
@@ -54,8 +57,9 @@ public class Player : MonoBehaviour
     private SpriteRenderer sr;
     private Vector2 moveInput;
 
-    private bool isGrounded;
-    private bool isSprinting;
+    // Audio
+    public AudioClip jumpSound;
+    public AudioClip damageSound;
 
     private void Awake()
     {
@@ -184,6 +188,7 @@ public class Player : MonoBehaviour
     {
         coyoteTimeCounter = 0;
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
+        AudioManager.instance.PlaySFX(jumpSound);
 
         stamina.DecreaseStamina(specialDecrease);
     }
@@ -288,6 +293,7 @@ public class Player : MonoBehaviour
         lives.LoseLife();
         OnLivesChanged?.Invoke(lives.CurrentLives);
         Debug.Log("YOWCHHHHHH!!!!!");
+        AudioManager.instance.PlaySFX(damageSound);
 
         if(lives.IsDead())
             Die();
@@ -312,7 +318,6 @@ public class Player : MonoBehaviour
 
     /*
         - update animations so they change based on each action
-        - update sounds to play with certain actions (do i just put this inside of the callback functions?)
     */
 
     void FlipSprite()
