@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8655862444394412494}
   - component: {fileID: 3798384497300214104}
   - component: {fileID: 6423495412667738534}
-  - component: {fileID: 5244027786083889641}
+  - component: {fileID: 2801161221881474227}
   - component: {fileID: 3754900839863141068}
   m_Layer: 6
   m_Name: Hare_Sprite
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -903982139
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 3320dc8808083fb49942c08f29f867ec, type: 3}
@@ -260,7 +260,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5244027786083889641
+--- !u!114 &2801161221881474227
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,8 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41d864c8e0704f47b5fb3751371d552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveSpeed: 12
+  moveSpeed: 10
   sprintMultiplier: 1.5
+  acceleration: 30
+  deceleration: 110
+  velPower: 0.6
   jumpForce: 12
   fallMultiplier: 2.5
   groundCheck: {fileID: 8958322832998607811}
@@ -281,9 +284,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  maxStamina: 100
+  maxStamina: 150
   staminaBar: {fileID: 0}
-  sprintDecrease: 7
+  sprintDecrease: 5
   specialDecrease: 10
   staminaIncrease: 15
   livesUI: {fileID: 0}

@@ -47,6 +47,9 @@ TagManager:
   - name: UI
     uniqueID: 3490196057
     locked: 0
+  - name: LevelObjs
+    uniqueID: 1103219979
+    locked: 0
   - name: Player
     uniqueID: 157652071
     locked: 0

@@ -5,9 +5,12 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     // Movement
-    public float moveSpeed = 12f;
+    public float moveSpeed = 8f;
     public float sprintMultiplier = 1.5f;
     private float currentSpeed;
+    public float acceleration = 30f;
+    public float deceleration = 120f;
+    public float velPower = 0.6f;
 
     // Jump
     public float jumpForce = 12f;
@@ -21,7 +24,7 @@ public class Player : MonoBehaviour
 
     // Ground Check
     public Transform groundCheck;
-    public float groundRadius = 0.2f;
+    public float groundRadius = 0.3f;
     public LayerMask groundLayer;
 
     // Special Action Objs
@@ -146,7 +149,11 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        rb.linearVelocity = new Vector2(moveInput.x * currentSpeed, rb.linearVelocityY);
+        float targetSpeed = moveInput.x * currentSpeed;
+        float speedDiff = targetSpeed - rb.linearVelocityX;
+        float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
+        float movement = Mathf.Pow(Mathf.Abs(speedDiff) * accelRate, velPower) * Mathf.Sign(speedDiff);
+        rb.linearVelocity = new Vector2(rb.linearVelocityX + movement * Time.fixedDeltaTime, rb.linearVelocityY);
 
         if (rb.linearVelocity.y < 0)
         {
