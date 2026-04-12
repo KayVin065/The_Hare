@@ -272,10 +272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41d864c8e0704f47b5fb3751371d552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  moveSpeed: 10
+  moveSpeed: 6
   sprintMultiplier: 1.5
   acceleration: 30
-  deceleration: 110
+  deceleration: 120
   velPower: 0.6
   jumpForce: 12
   fallMultiplier: 2.5

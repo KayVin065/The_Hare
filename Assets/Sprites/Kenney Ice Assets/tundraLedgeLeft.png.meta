@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1293303489288a04f8576f4c021c91b0
+guid: dd561734031bb2d4598a254ee8ac2f1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7538147134619460060
-    second: snowLeft_0
+      213: 3882397503799038688
+    second: tundraLedgeLeft_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: snowLeft_0
+      name: tundraLedgeLeft_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 70
-        height: 9
+        x: 64
+        y: 51
+        width: 6
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cd12f9f41e0ec9860800000000000000
-      internalID: 7538147134619460060
+      spriteID: 0e21ecab5fb01e530800000000000000
+      internalID: 3882397503799038688
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      snowLeft_0: 7538147134619460060
+      tundraLedgeLeft_0: 3882397503799038688
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
