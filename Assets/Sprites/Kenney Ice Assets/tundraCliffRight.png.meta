@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6eeb510f3667e384d80fe099505952f3
+guid: 50e1ced55949e9449b97d48a763b890f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1692496245679174331
-    second: tundraLedgeRight_0
+      213: 1357784599307703614
+    second: tundraCliffRight_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tundraLedgeRight_0
+      name: tundraCliffRight_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
+        y: 0
         width: 70
-        height: 19
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 54d4c9cb1ab0388e0800000000000000
-      internalID: -1692496245679174331
+      spriteID: e355b3336e1d7d210800000000000000
+      internalID: 1357784599307703614
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tundraLedgeRight_0: -1692496245679174331
+      tundraCliffRight_0: 1357784599307703614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
