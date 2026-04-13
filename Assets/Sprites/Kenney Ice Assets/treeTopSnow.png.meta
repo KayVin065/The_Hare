@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c1490f0744f738846ba6254478e37668
+guid: 02cac6f67332dbd4aad91c89d9f42208
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3240349577776169581
-    second: snowGroundRight_0
+      213: -2677729459025252475
+    second: treeTopSnow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: snowGroundRight_0
+      name: treeTopSnow_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 70
-        height: 49
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39d70942a37f703d0800000000000000
-      internalID: -3240349577776169581
+      spriteID: 58f63368e3bc6dad0800000000000000
+      internalID: -2677729459025252475
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      snowGroundRight_0: -3240349577776169581
+      treeTopSnow_0: -2677729459025252475
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

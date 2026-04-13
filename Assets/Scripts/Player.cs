@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     private GameObject nearbyDig;
     private GameObject nearbyInvestigate;
 
-    private bool isGrounded;
+    public bool isGrounded;
     private bool isSprinting;
 
     // Stamina
@@ -328,7 +328,7 @@ public class Player : MonoBehaviour
         - update animations so they change based on each action
     */
 
-    void FlipSprite()
+    public void FlipSprite()
     {
         if (moveInput.x > 0)
             sr.flipX = false;
@@ -336,10 +336,14 @@ public class Player : MonoBehaviour
             sr.flipX = true;
     }
 
-    void GameOver() 
+    public void GameOver() 
     {
         Debug.Log("Game Over!");
         loseText.SetActive(true);
+
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+        sr.enabled = false;
 
         this.enabled = false; 
     }
