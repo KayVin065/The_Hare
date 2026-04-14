@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
 
     public float sprintDecrease = 5f;
     public float specialDecrease = 10f;
-    public float staminaIncrease = 15f;
+    public float staminaIncrease = 20f;
     private float staminaMultiplier = 1.5f;
 
     // Lives
