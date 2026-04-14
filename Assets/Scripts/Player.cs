@@ -339,6 +339,8 @@ public class Player : MonoBehaviour
     public void GameOver() 
     {
         Debug.Log("Game Over!");
+        StartCoroutine(GameOverRoutine());
+
         loseText.SetActive(true);
 
         rb.linearVelocity = Vector2.zero;
@@ -346,5 +348,19 @@ public class Player : MonoBehaviour
         sr.enabled = false;
 
         this.enabled = false; 
+    }
+
+    IEnumerator GameOverRoutine()
+    {
+        Debug.Log("Game Over!");
+        loseText.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+
+        rb.linearVelocity = Vector2.zero;
+        rb.simulated = false;
+        sr.enabled = false;
+
+        this.enabled = false;
     }
 }

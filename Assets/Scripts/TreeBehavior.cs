@@ -38,8 +38,6 @@ public class TreeBehavior : MonoBehaviour
         if (leavesParticles != null)
         {
             Debug.Log("Leaves particles not null Start Falling");
-            // leavesParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            // leavesParticles.Play();
             SpawnLeaves();
         }
 
@@ -58,8 +56,6 @@ public class TreeBehavior : MonoBehaviour
         {
             Debug.Log("Leaves particles not null Fallen Down");
             SpawnLeaves();
-            // leavesParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            // leavesParticles.Play();
         }
 
         rb.linearVelocity = Vector2.zero;
@@ -70,8 +66,6 @@ public class TreeBehavior : MonoBehaviour
         {
             tree[i].SetActive(false);
         }
-
-        // make it explode into particles
     }
 
     private IEnumerator FreezeAfterLanding()
@@ -86,7 +80,7 @@ public class TreeBehavior : MonoBehaviour
 
         Instantiate(
             leavesParticles,
-            transform.position,        // where the tree is
+            transform.position,
             Quaternion.identity
         );
     }
