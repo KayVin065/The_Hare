@@ -74,7 +74,7 @@ public class TreeBehavior : MonoBehaviour
         FallenDown();
     }
 
-    private void SpawnLeaves()
+    public void SpawnLeaves()
     {
         if (leavesParticles == null) return;
 

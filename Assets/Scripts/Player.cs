@@ -5,16 +5,16 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
     // Movement
-    public float moveSpeed = 8f;
+    public float moveSpeed = 6.5f;
     public float sprintMultiplier = 1.5f;
     private float currentSpeed;
-    public float acceleration = 30f;
+    public float acceleration = 40f;
     public float deceleration = 120f;
     public float velPower = 0.6f;
 
     // Jump
-    public float jumpForce = 12f;
-    public float fallMultiplier = 2.5f;
+    private float jumpForce = 12f;
+    private float fallMultiplier = 2.5f;
 
     // Jump Assist
     private float coyoteTime = 0.1f;
@@ -32,17 +32,18 @@ public class Player : MonoBehaviour
     private GameObject nearbyDig;
     private GameObject nearbyInvestigate;
 
-    public bool isGrounded;
+    private bool isGrounded;
     private bool isSprinting;
+    private bool controlsLocked = false;
 
     // Stamina
     private Stamina stamina;
-    public float maxStamina = 150f; 
+    [SerializeField] private float maxStamina = 150f; 
     [SerializeField] private UnityEngine.UI.Slider staminaBar;
 
-    public float sprintDecrease = 5f;
-    public float specialDecrease = 10f;
-    public float staminaIncrease = 20f;
+    private float sprintDecrease = 5f;
+    private float specialDecrease = 10f;
+    private float staminaIncrease = 20f;
     private float staminaMultiplier = 1.5f;
 
     // Lives
@@ -59,6 +60,9 @@ public class Player : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
     private Vector2 moveInput;
+    [SerializeField] private Transform mouthLocation;
+    [SerializeField] private ParticleSystem eatingParticles;
+    // [SerializeField] private ParticleSystem bloodParticles;
 
     // Audio
     public AudioClip jumpSound;
@@ -112,9 +116,13 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        moveInput = playerInput.Player.Move.ReadValue<Vector2>();
+        if(!controlsLocked)
+            moveInput = playerInput.Player.Move.ReadValue<Vector2>();
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+
+        // Changing angle when sliding
+
 
         // Jump timer and counter updates
         if(isGrounded) 
@@ -174,6 +182,12 @@ public class Player : MonoBehaviour
 
         if (obj.CompareTag("Enemy"))
             TakeHit();
+
+        if (obj.CompareTag("ControlsLocked"))
+        {
+            rb.linearVelocity = new Vector2(7f, rb.linearVelocity.y);
+            controlsLocked = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D obj) 
@@ -186,6 +200,11 @@ public class Player : MonoBehaviour
 
         if (obj.gameObject == nearbyInvestigate)
             nearbyInvestigate = null;
+
+        if (obj.CompareTag("ControlsLocked"))
+        {
+            controlsLocked = false;
+        }
     }
 
     // ********** ACTIONS **********
@@ -233,11 +252,16 @@ public class Player : MonoBehaviour
         Edible edibleObj = nearbyFood.GetComponent<Edible>();
 
         if (edibleObj != null) {
+            if (eatingParticles != null)
+            {
+                Debug.Log("Eating particles not null, spawning...");
+                SpawnCrumbs();
+            }
+
             edibleObj.Eat();
             stamina.IncreaseStamina(staminaIncrease);
 
             Debug.Log("You ate something");
-
             nearbyFood = null;
         }
     }
@@ -301,6 +325,10 @@ public class Player : MonoBehaviour
         lives.LoseLife();
         OnLivesChanged?.Invoke(lives.CurrentLives);
         Debug.Log("YOWCHHHHHH!!!!!");
+
+        // SpawnBlood()
+        // check for blood particles and spawn them here, similar to eating
+
         AudioManager.instance.PlaySFX(damageSound);
 
         if(lives.IsDead())
@@ -331,23 +359,42 @@ public class Player : MonoBehaviour
     public void FlipSprite()
     {
         if (moveInput.x > 0)
+        {
             sr.flipX = false;
+            mouthLocation.localPosition = new Vector3(Mathf.Abs(mouthLocation.localPosition.x), mouthLocation.localPosition.y, mouthLocation.localPosition.z);
+        }
         else if (moveInput.x < 0)
+        {
             sr.flipX = true;
+            if(mouthLocation.localPosition.x > 0)
+                mouthLocation.localPosition = new Vector3(-mouthLocation.localPosition.x, mouthLocation.localPosition.y, mouthLocation.localPosition.z);
+        }
+    }
+
+    // Instantiates new eating particles
+    private void SpawnCrumbs()
+    {
+        if(eatingParticles == null) return;
+
+        float dir = transform.localScale.x;
+        Quaternion rot = Quaternion.identity;
+
+        if(dir < 0)
+            rot = Quaternion.Euler(0, 180, 0);
+        else 
+            rot = Quaternion.Euler(0, 0, 20);
+
+        Instantiate(
+            eatingParticles,
+            mouthLocation.position,
+            rot
+        );
     }
 
     public void GameOver() 
     {
         Debug.Log("Game Over!");
         StartCoroutine(GameOverRoutine());
-
-        loseText.SetActive(true);
-
-        rb.linearVelocity = Vector2.zero;
-        rb.simulated = false;
-        sr.enabled = false;
-
-        this.enabled = false; 
     }
 
     IEnumerator GameOverRoutine()
@@ -355,7 +402,7 @@ public class Player : MonoBehaviour
         Debug.Log("Game Over!");
         loseText.SetActive(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;

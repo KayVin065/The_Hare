@@ -7,7 +7,7 @@ public class Diggable : MonoBehaviour
 
     public AudioClip digSound;
 
-    public void Dig() 
+    public virtual void Dig() 
     {
         currentDigs++;
 
