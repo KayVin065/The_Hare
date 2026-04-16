@@ -8,6 +8,8 @@ TagManager:
   - Plant
   - Enemy
   - ControlsLocked
+  - ControlsUnlocked
+  - Avalanche
   layers:
   - Default
   - TransparentFX

@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private Vector2 moveInput;
     [SerializeField] private Transform mouthLocation;
     [SerializeField] private ParticleSystem eatingParticles;
-    // [SerializeField] private ParticleSystem bloodParticles;
+    [SerializeField] private ParticleSystem bloodParticles;
 
     // Audio
     public AudioClip jumpSound;
@@ -157,6 +157,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        if(controlsLocked)
+            currentSpeed = 6.5f;
+
         float targetSpeed = moveInput.x * currentSpeed;
         float speedDiff = targetSpeed - rb.linearVelocityX;
         float accelRate = (Mathf.Abs(targetSpeed) > 0.01f) ? acceleration : deceleration;
@@ -185,8 +188,12 @@ public class Player : MonoBehaviour
 
         if (obj.CompareTag("ControlsLocked"))
         {
-            rb.linearVelocity = new Vector2(7f, rb.linearVelocity.y);
+            moveInput = Vector2.zero;
             controlsLocked = true;
+        }
+        if (obj.CompareTag("ControlsUnlocked"))
+        {
+            controlsLocked = false;
         }
     }
 
@@ -202,6 +209,10 @@ public class Player : MonoBehaviour
             nearbyInvestigate = null;
 
         if (obj.CompareTag("ControlsLocked"))
+        {
+            controlsLocked = true;
+        }
+        if (obj.CompareTag("ControlsUnlocked"))
         {
             controlsLocked = false;
         }
@@ -326,8 +337,7 @@ public class Player : MonoBehaviour
         OnLivesChanged?.Invoke(lives.CurrentLives);
         Debug.Log("YOWCHHHHHH!!!!!");
 
-        // SpawnBlood()
-        // check for blood particles and spawn them here, similar to eating
+        SpawnBlood();
 
         AudioManager.instance.PlaySFX(damageSound);
 
@@ -388,6 +398,17 @@ public class Player : MonoBehaviour
             eatingParticles,
             mouthLocation.position,
             rot
+        );
+    }
+
+    private void SpawnBlood()
+    {
+        if(bloodParticles == null) return;
+
+        Instantiate(
+            bloodParticles,
+            transform.position,
+            Quaternion.identity
         );
     }
 
