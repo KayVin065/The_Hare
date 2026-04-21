@@ -12,13 +12,13 @@ public class AvalancheController : MonoBehaviour
     public float rayDistance = 10f;
 
     public GameObject debrisPrefab;
-    public float debrisSpawnRate = 0.08f;
+    public float baseSpawnRate = 0.2f;
+    public float minSpawnRate = 0.01f;
     private float debrisTimer;
 
     private bool isActive = false;
 
     // Child Objects;
-    public AvalancheSpawner spawner;
     private ParticleSystem particles;
 
     void Awake()
@@ -33,10 +33,13 @@ public class AvalancheController : MonoBehaviour
 
         debrisTimer -= Time.deltaTime;
 
+        float speedRatio = speed / maxSpeed;
+        float currSpawnRate = Mathf.Lerp(baseSpawnRate, minSpawnRate, speedRatio);
+
         if(debrisTimer <= 0f)
         {
             SpawnDebris();
-            debrisTimer = debrisSpawnRate;
+            debrisTimer = currSpawnRate;
         }
 
         CalculateSlopeDirection();
@@ -56,8 +59,6 @@ public class AvalancheController : MonoBehaviour
     public void Deactivate()
     {
         isActive = false;
-
-        spawner.StopSpawning();
         particles.Stop();
     }
 
@@ -92,9 +93,19 @@ public class AvalancheController : MonoBehaviour
 
         spawnPos -= forward * 2f;
         spawnPos += right * Random.Range(-3f, 3f);
-        spawnPos.y -= 0.4f;
 
-        Instantiate(debrisPrefab, spawnPos, Quaternion.identity);
-        //obj.GetComponent<DebrisMotion>().Launch(forward);
+        RaycastHit2D hit = Physics2D.Raycast(
+            spawnPos + Vector3.up * 5f,  // start ray above terrain
+            Vector2.down,
+            20f,
+            groundMask
+        );
+
+        if (!hit.collider) return;
+
+        spawnPos = hit.point + Vector2.up * 0.6f;
+
+        GameObject obj = Instantiate(debrisPrefab, spawnPos, Quaternion.identity);
+        obj.transform.localScale = Vector3.one * Random.Range(0.4f, 1f);
     }
 }
