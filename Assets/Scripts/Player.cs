@@ -135,15 +135,28 @@ public class Player : MonoBehaviour
         if (jumpBufferCounter > 0 && coyoteTimeCounter > 0) {
             Jump();
             jumpBufferCounter = 0;
+            StartCoroutine(EndJumpRoutine());
         }
 
         // Stamina calculations
         if(moveInput.x != 0) 
         {
+            anim.SetBool("Walking", true);
             // Decrease stamina more while sprinting
             if(isSprinting)
+            {
                 stamina.DecreaseStamina(sprintDecrease * Time.deltaTime);
+                anim.SetBool("Sprinting", true);
+            }
+            else
+                anim.SetBool("Sprinting", false);
         }
+        else
+        {
+            anim.SetBool("Walking", false);
+            anim.SetBool("Sprinting", false);
+        }
+
 
         // Stamina UI 
         if(staminaBar != null)
@@ -227,6 +240,7 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
+        anim.SetBool("Jumping", true);
         coyoteTimeCounter = 0;
         rb.linearVelocity = new Vector2(rb.linearVelocityX, jumpForce);
         AudioManager.instance.PlaySFX(jumpSound);
@@ -361,11 +375,6 @@ public class Player : MonoBehaviour
     }
 
     // ********** VISUALS **********
-
-    /*
-        - update animations so they change based on each action
-    */
-
     public void FlipSprite()
     {
         if (moveInput.x > 0)
@@ -379,6 +388,13 @@ public class Player : MonoBehaviour
             if(mouthLocation.localPosition.x > 0)
                 mouthLocation.localPosition = new Vector3(-mouthLocation.localPosition.x, mouthLocation.localPosition.y, mouthLocation.localPosition.z);
         }
+    }
+
+    // Disable jump animation once jump complete
+    IEnumerator EndJumpRoutine()
+    {
+        yield return new WaitForSeconds(0.18f);
+        anim.SetBool("Jumping", false);
     }
 
     // Instantiates new eating particles
@@ -401,6 +417,7 @@ public class Player : MonoBehaviour
         );
     }
 
+    // Instantiates new blood particles when taking damage
     private void SpawnBlood()
     {
         if(bloodParticles == null) return;
@@ -423,10 +440,13 @@ public class Player : MonoBehaviour
         Debug.Log("Game Over!");
         loseText.SetActive(true);
 
-        yield return new WaitForSeconds(0.3f);
-
         rb.linearVelocity = Vector2.zero;
         rb.simulated = false;
+
+        yield return new WaitForSeconds(0.3f);
+
+        // rb.linearVelocity = Vector2.zero;
+        // rb.simulated = false;
         sr.enabled = false;
 
         this.enabled = false;

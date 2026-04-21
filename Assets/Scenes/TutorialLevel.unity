@@ -5292,7 +5292,7 @@ Transform:
   m_GameObject: {fileID: 132426349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 85.57, y: -5, z: 0}
+  m_LocalPosition: {x: 82.69, y: -0.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5734,7 +5734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &195087394
 Transform:
   m_ObjectHideFlags: 0
@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AvalancheSpawner
   pool: {fileID: 1474512715}
-  spawnRate: 0.5
+  spawnRate: 1
   spreadY: 2
   chunkSpeed: 9
   groundMask:
@@ -9524,7 +9524,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -804771239
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8667466294985060184, guid: 56dc7394fb993e045acf0ab9174ef0e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15536,72 +15536,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!1001 &881831429
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 68.43385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 12.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523597521125238490, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5169315358986934721, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_Name
-      value: SnowRockDebris
-      objectReference: {fileID: 0}
-    - target: {fileID: 5300862375771013143, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5300862375771013143, guid: b512512830c302741ba994725641125b, type: 3}
-      propertyPath: m_LinearDamping
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8196495734166627810, guid: b512512830c302741ba994725641125b, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b512512830c302741ba994725641125b, type: 3}
 --- !u!4 &897792599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5377925926841236057, guid: 5452d6234b94d2241982cf6e4a802257, type: 3}
@@ -15896,7 +15830,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -804771239
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8667466294985060184, guid: 56dc7394fb993e045acf0ab9174ef0e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17088,7 +17022,7 @@ GameObject:
   - component: {fileID: 1082243436}
   m_Layer: 3
   m_Name: Mtn Platform R (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18004,7 +17938,7 @@ Transform:
   m_GameObject: {fileID: 1172850417}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.95, y: -5, z: 0}
+  m_LocalPosition: {x: 85.5, y: -3.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19983,7 +19917,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -804771239
   m_SortingLayer: 1
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -8667466294985060184, guid: 56dc7394fb993e045acf0ab9174ef0e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -23500,6 +23434,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 805039252911835727, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 590e3811e129d7d40a415c9e28d3ce6a, type: 2}
     - target: {fileID: 2801161221881474227, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: livesUI
       value: 
@@ -23558,7 +23496,7 @@ PrefabInstance:
       objectReference: {fileID: 1578181818}
     - target: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_Name
-      value: Hare_Sprite
+      value: The_Hare
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23905,7 +23843,7 @@ GameObject:
   - component: {fileID: 2051988644}
   m_Layer: 3
   m_Name: Mtn Platform L (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27381,7 +27319,6 @@ SceneRoots:
   - {fileID: 992929791}
   - {fileID: 706943480}
   - {fileID: 1243108784}
-  - {fileID: 881831429}
   - {fileID: 22050362}
   - {fileID: 1172850419}
   - {fileID: 132426351}

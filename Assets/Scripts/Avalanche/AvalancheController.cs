@@ -94,7 +94,7 @@ public class AvalancheController : MonoBehaviour
         spawnPos += right * Random.Range(-3f, 3f);
         spawnPos.y -= 0.4f;
 
-        GameObject obj = Instantiate(debrisPrefab, spawnPos, Quaternion.identity);
-        obj.GetComponent<DebrisMotion>().Launch(forward);
+        Instantiate(debrisPrefab, spawnPos, Quaternion.identity);
+        //obj.GetComponent<DebrisMotion>().Launch(forward);
     }
 }
