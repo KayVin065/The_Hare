@@ -3,6 +3,9 @@ using UnityEngine;
 public class Investigatable : MonoBehaviour
 {
     public bool investigated = false;
+    public CutsceneManager manager;
+
+    public InvestigateAction action;
 
     public AudioClip investigateSound;
 
@@ -23,12 +26,7 @@ public class Investigatable : MonoBehaviour
         Debug.Log("I've been investigated!");
         AudioManager.instance.PlaySFX(investigateSound);
 
-        PlayCutscene();
+        action.Execute(manager);
         sr.sprite = usedSprite;
-    }
-
-    void PlayCutscene()
-    {
-        Debug.Log("Cutscene placeholder");
     }
 }
