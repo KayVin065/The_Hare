@@ -8919,6 +8919,7 @@ GameObject:
   - component: {fileID: 562024001}
   - component: {fileID: 562024004}
   - component: {fileID: 562024003}
+  - component: {fileID: 562024005}
   m_Layer: 6
   m_Name: First Rock
   m_TagString: Untagged
@@ -9072,6 +9073,33 @@ PolygonCollider2D:
       - {x: 0.295, y: -0.17999999}
       - {x: 0.225, y: 0.21}
   m_UseDelaunayMesh: 1
+--- !u!50 &562024005
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562023999}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &564892770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22169,7 +22197,7 @@ Transform:
   m_GameObject: {fileID: 1578181815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 3, z: -10}
+  m_LocalPosition: {x: 4, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -22190,7 +22218,7 @@ MonoBehaviour:
   moveSpeed: 8
   lookAheadDist: 1
   lookAheadSpeed: 3
-  minX: 5
+  minX: 4
   maxX: 138.5
   minY: -10
   maxY: 15
@@ -25462,10 +25490,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 805039252911835727, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 590e3811e129d7d40a415c9e28d3ce6a, type: 2}
     - target: {fileID: 2801161221881474227, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: livesUI
       value: 
@@ -25480,7 +25504,7 @@ PrefabInstance:
       objectReference: {fileID: 1801191309}
     - target: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2901331998497192866, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -25526,69 +25550,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: The_Hare
       objectReference: {fileID: 0}
-    - target: {fileID: 8655862444394412494, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
-      propertyPath: m_Radius
-      value: 1.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655862444394412494, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655862444394412494, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8655862444394412494, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 2023086273}
+      insertIndex: 6
+      addedObject: {fileID: 2023086281}
   m_SourcePrefab: {fileID: 100100000, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
 --- !u!1 &2023086262 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6247393536226228061, guid: e6b609e7f36a5d346857ed96b01a7bd7, type: 3}
   m_PrefabInstance: {fileID: 2023086261}
   m_PrefabAsset: {fileID: 0}
---- !u!70 &2023086273
-CapsuleCollider2D:
+--- !u!114 &2023086281
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023086262}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.09580016}
-  m_Size: {x: 3.2061677, y: 3.7549138}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a17d2085e96ec14b83a479453c902b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlidingBehavior
+  slidingSprite: {fileID: 0}
+  regularSprite: {fileID: 0}
+  sliding: 1
 --- !u!1 &2037196515
 GameObject:
   m_ObjectHideFlags: 0

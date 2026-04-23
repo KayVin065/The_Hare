@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2901331998497192866}
   - component: {fileID: 3069932957863230149}
   - component: {fileID: 921023301971935674}
-  - component: {fileID: 8655862444394412494}
+  - component: {fileID: 1702390003223087573}
   - component: {fileID: 3798384497300214104}
   - component: {fileID: 2801161221881474227}
   - component: {fileID: 3754900839863141068}
@@ -176,8 +176,8 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 3.5}
   m_EdgeRadius: 0
---- !u!58 &8655862444394412494
-CircleCollider2D:
+--- !u!70 &1702390003223087573
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -210,8 +210,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.4}
-  m_Radius: 1.5
+  m_Offset: {x: 0, y: -0.09580016}
+  m_Size: {x: 3.2061677, y: 3.7549138}
+  m_Direction: 0
 --- !u!50 &3798384497300214104
 Rigidbody2D:
   serializedVersion: 5
@@ -310,7 +311,7 @@ Animator:
   m_GameObject: {fileID: 6247393536226228061}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 590e3811e129d7d40a415c9e28d3ce6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

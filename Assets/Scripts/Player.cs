@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -433,6 +434,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Game Over!");
         StartCoroutine(GameOverRoutine());
+        RestartScene();
     }
 
     IEnumerator GameOverRoutine()
@@ -445,10 +447,16 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
 
-        // rb.linearVelocity = Vector2.zero;
-        // rb.simulated = false;
         sr.enabled = false;
 
         this.enabled = false;
     }
+
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }
+
+
