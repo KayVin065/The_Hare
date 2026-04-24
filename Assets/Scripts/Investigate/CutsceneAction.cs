@@ -5,9 +5,10 @@ public class CutsceneAction : InvestigateAction
 {
     public Sprite[] frames;
     public float frameDuration = 2f;
+    public float waitTime = 0f;
 
     public override void Execute(CutsceneManager manager)
     {
-        manager.PlayCutscene(frames, frameDuration);
+        manager.PlayCutscene(frames, frameDuration, waitTime);
     }
 }

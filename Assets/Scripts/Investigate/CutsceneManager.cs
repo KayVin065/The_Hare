@@ -11,28 +11,26 @@ public class CutsceneManager : MonoBehaviour
     public TMPro.TextMeshProUGUI textUI;
 
     public GameObject player;
-    //private PlayerInput playerInput;
     private Rigidbody2D rb;
 
     void Start()
     {
-        //playerInput = player.GetComponent<PlayerInput>();
         rb = player.GetComponent<Rigidbody2D>();
     }
 
-    public void PlayCutscene(Sprite[] frames, float duration)
+    public void PlayCutscene(Sprite[] frames, float duration, float waitTime)
     {
-        cutsceneCanvas.SetActive(true);
-
         // Disable player movement while cutscene is playing
-        //playerInput.Player.Disable();
         rb.linearVelocity = Vector2.zero;
         rb.bodyType = RigidbodyType2D.Kinematic;
-        StartCoroutine(PlaySequence(frames, duration));
+        StartCoroutine(PlaySequence(frames, duration, waitTime));
     }
 
-    IEnumerator PlaySequence(Sprite[] frames, float duration)
+    IEnumerator PlaySequence(Sprite[] frames, float duration, float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
+        cutsceneCanvas.SetActive(true);
+
         foreach (Sprite frame in frames)
         {
             displayImage.sprite = frame;
@@ -44,7 +42,6 @@ public class CutsceneManager : MonoBehaviour
     void EndCutscene()
     {
         cutsceneCanvas.SetActive(false);
-        //playerInput.Player.Enable();
         rb.bodyType = RigidbodyType2D.Dynamic;
     }
 

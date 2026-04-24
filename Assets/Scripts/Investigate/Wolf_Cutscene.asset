@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d0d2211afad1d4d8c5ffb9fc298169, type: 3}
+  m_Name: Wolf_Cutscene
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneAction
+  frames:
+  - {fileID: 4113829005332862926, guid: 8a550cc97533fb940b7099d5cc80e758, type: 3}
+  - {fileID: 7568887834224028470, guid: 6da1205d78ec5814b8ddce6201763e75, type: 3}
+  - {fileID: 7568887834224028470, guid: 6da1205d78ec5814b8ddce6201763e75, type: 3}
+  - {fileID: 6443778714963072147, guid: e0497ae42f6d9f842b3723c6446c8864, type: 3}
+  - {fileID: 6443778714963072147, guid: e0497ae42f6d9f842b3723c6446c8864, type: 3}
+  - {fileID: -2021388452949312465, guid: 7e619405d28e92142b2c0e692ccd46a1, type: 3}
+  - {fileID: -2021388452949312465, guid: 7e619405d28e92142b2c0e692ccd46a1, type: 3}
+  - {fileID: 8477585487148163143, guid: 295f11e4120600b45b6e5dd04aeb9586, type: 3}
+  - {fileID: 8477585487148163143, guid: 295f11e4120600b45b6e5dd04aeb9586, type: 3}
+  - {fileID: 4113829005332862926, guid: 8a550cc97533fb940b7099d5cc80e758, type: 3}
+  - {fileID: 4113829005332862926, guid: 8a550cc97533fb940b7099d5cc80e758, type: 3}
+  frameDuration: 1.5
+  waitTime: 2
