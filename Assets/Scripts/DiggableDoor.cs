@@ -5,7 +5,8 @@ public class DiggableDoor : Diggable
     [SerializeField] private GameObject winText;
     [SerializeField] private GameObject player;
 
-    public CutsceneManager manager;
+    public GameManager manager;
+    public CutsceneManager cutsceneManager;
     public InvestigateAction action = null;
 
     void Awake()
@@ -27,8 +28,9 @@ public class DiggableDoor : Diggable
 
         // for triggering cutscenes post-level
         if(action != null)
-            action.Execute(manager);
+            action.Execute(cutsceneManager);
         
-        // call game manager to switch to next level        
+        // call game manager to switch to next level     
+        manager.TriggerEndGame();   
     }
 }
