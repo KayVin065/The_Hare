@@ -14,13 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CutsceneAction
   frames:
   - {fileID: -855298285791758126, guid: cd61bbe3c95a1314c87b7325d4f5d5b2, type: 3}
+  - {fileID: -855298285791758126, guid: cd61bbe3c95a1314c87b7325d4f5d5b2, type: 3}
+  - {fileID: 6937817954938267909, guid: fd8465b7006cfbe449ce49678fcf1f96, type: 3}
   - {fileID: 6937817954938267909, guid: fd8465b7006cfbe449ce49678fcf1f96, type: 3}
   - {fileID: -6470460504253458178, guid: fe5e2b748a910fd4d95c5bdde48d9737, type: 3}
+  - {fileID: -6470460504253458178, guid: fe5e2b748a910fd4d95c5bdde48d9737, type: 3}
   - {fileID: -4178046375966092550, guid: d51ccffd209bf864ebe2fce27a07392d, type: 3}
+  - {fileID: -4178046375966092550, guid: d51ccffd209bf864ebe2fce27a07392d, type: 3}
+  - {fileID: 4130640169021434097, guid: bd6941b996c989d4ab6a3d1f974fd296, type: 3}
   - {fileID: 4130640169021434097, guid: bd6941b996c989d4ab6a3d1f974fd296, type: 3}
   - {fileID: 3465286685962602723, guid: 9050326afddf0084e87bcb7e02da07db, type: 3}
   - {fileID: 7028616704906629411, guid: 3c8681328e608964e87b0e072f58f645, type: 3}
   - {fileID: 8288426215254106694, guid: 5b6308bf2647b414a9db4881573ad093, type: 3}
   - {fileID: 4113829005332862926, guid: 8a550cc97533fb940b7099d5cc80e758, type: 3}
+  - {fileID: 4113829005332862926, guid: 8a550cc97533fb940b7099d5cc80e758, type: 3}
   - {fileID: -5099292496197868168, guid: cc6621c93c90a544aaff96e1b4edbcae, type: 3}
-  frameDuration: 2.5
+  - {fileID: -5099292496197868168, guid: cc6621c93c90a544aaff96e1b4edbcae, type: 3}
+  frameDuration: 1
+  waitTime: 0

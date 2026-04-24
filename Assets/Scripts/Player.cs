@@ -69,6 +69,13 @@ public class Player : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip damageSound;
 
+    // Sliding Graphics Handling
+    [SerializeField] private Transform graphics;
+    [SerializeField] private float rotationSpeed = 10f;
+    private Quaternion slideRotation = Quaternion.Euler(0, 0, -45f);
+    private Quaternion uprightRotation = Quaternion.identity;
+    private bool isSliding = false;
+
     [SerializeField] private GameObject loseText;
 
     private void Awake()
@@ -76,8 +83,8 @@ public class Player : MonoBehaviour
         playerInput = new PlayerInput();
 
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        sr = GetComponent<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
+        sr = GetComponentInChildren<SpriteRenderer>();
 
         currentSpeed = moveSpeed;
     }
@@ -123,8 +130,8 @@ public class Player : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
         // Changing angle when sliding
-
-
+        SlideHandling();
+        
         // Jump timer and counter updates
         if(isGrounded) 
             coyoteTimeCounter = coyoteTime;
@@ -157,7 +164,6 @@ public class Player : MonoBehaviour
             anim.SetBool("Walking", false);
             anim.SetBool("Sprinting", false);
         }
-
 
         // Stamina UI 
         if(staminaBar != null)
@@ -204,6 +210,7 @@ public class Player : MonoBehaviour
         {
             moveInput = Vector2.zero;
             controlsLocked = true;
+            isSliding = true;
         }
         if (obj.CompareTag("ControlsUnlocked"))
         {
@@ -229,6 +236,35 @@ public class Player : MonoBehaviour
         if (obj.CompareTag("ControlsUnlocked"))
         {
             controlsLocked = false;
+            isSliding = false;
+        }
+    }
+
+    void SlideHandling()
+    {
+        Quaternion targetRot = isSliding ? slideRotation : uprightRotation;
+
+        graphics.localRotation = Quaternion.Lerp(
+            graphics.localRotation, 
+            targetRot, 
+            rotationSpeed * Time.deltaTime
+        );
+
+        if(isSliding)
+        {
+            graphics.localPosition = Vector3.Lerp(
+                graphics.localPosition, 
+                new Vector3(-0.35f, -0.45f, 0),
+                rotationSpeed * Time.deltaTime
+            );
+        }
+        else
+        {
+            graphics.localPosition = Vector3.Lerp(
+                graphics.localPosition, 
+                Vector3.zero,
+                rotationSpeed * Time.deltaTime
+            );
         }
     }
 
@@ -333,8 +369,9 @@ public class Player : MonoBehaviour
     private void Investigate()
     {
         Investigatable investigateObj = nearbyInvestigate.GetComponent<Investigatable>();
+        bool investigated = investigateObj.investigated;
 
-        if (investigateObj != null) {
+        if (investigateObj != null && !investigated) {
             investigateObj.Investigate();
             stamina.IncreaseStamina(staminaIncrease * staminaMultiplier);
 
